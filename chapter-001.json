@@ -1,0 +1,22 @@
+[
+	{ "kanji": "私", "kana": "わたし", "idn": "Saya"},
+	{ "kanji": "あなた", "kana": "あなた", "idn": "Anda"},
+	{ "kanji": "あの人", "kana": "あのひと", "idn": "Orang itu"},
+	{ "kanji": "あの方", "kana": "あのかた", "idn": "Beliau"},
+	{ "kanji": "先生", "kana": "せんせい", "idn": "Guru"},
+	{ "kanji": "教師", "kana": "きょうし", "idn": "Pengajar"},
+	{ "kanji": "学生", "kana": "がくせい", "idn": "Pelajar"},
+	{ "kanji": "会社員", "kana": "かいしゃいん", "idn": "Karyawan perusahaan"},
+	{ "kanji": "社員", "kana": "しゃいん", "idn": "Karyawan"},
+	{ "kanji": "銀行員", "kana": "ぎんこういん", "idn": "Pegawai bank"},
+	{ "kanji": "医者", "kana": "いしゃ", "idn": "Dokter"},
+	{ "kanji": "研究者", "kana": "けんきゅうしゃ", "idn": "Peneliti"},
+	{ "kanji": "大学", "kana": "だいがく", "idn": "Universitas"},
+	{ "kanji": "病院", "kana": "びょういん", "idn": "Rumah sakit"},
+	{ "kanji": "誰", "kana": "だれ", "idn": "Siapa"},
+	{ "kanji": "どなた", "kana": "どなた", "idn": "Siapa (sopan)"},
+	{ "kanji": "何歳", "kana": "なんさい", "idn": "Umur berapa"},
+	{ "kanji": "おいくつ", "kana": "おいくつ", "idn": "Umur berapa (sopan)"},
+	{ "kanji": "はい", "kana": "はい", "idn": "Iya"},
+	{ "kanji": "いいえ", "kana": "いいえ", "idn": "Tidak"}
+]
