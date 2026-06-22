@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Quicksand-Bold";
-  src: url("./../../assets/fonts/Quicksand-Bold.ttf");
+  src: url("./../assets/fonts/Quicksand-Bold.ttf");
 }
 
 :root {
