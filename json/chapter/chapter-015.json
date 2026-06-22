@@ -1,0 +1,20 @@
+[
+  { "kanji": "置きます", "kana": "おきます", "idn": "Meletakkan" },
+  { "kanji": "作ります", "kana": "つくります", "idn": "Membuat" },
+  { "kanji": "売ります", "kana": "うります", "idn": "Menjual" },
+  { "kanji": "知ります", "kana": "しります", "idn": "Mengetahui" },
+  { "kanji": "住みます", "kana": "すみます", "idn": "Tinggal" },
+  { "kanji": "研究します", "kana": "けんきゅうします", "idn": "Meneliti" },
+  { "kanji": "資料", "kana": "しりょう", "idn": "Bahan, data" },
+  { "kanji": "カタログ", "kana": "カタログ", "idn": "Katalog" },
+  { "kanji": "時刻表", "kana": "じこくひょう", "idn": "Jadwal" },
+  { "kanji": "服", "kana": "ふく", "idn": "Pakaian" },
+  { "kanji": "製品", "kana": "せいひん", "idn": "Produk" },
+  { "kanji": "ソフト", "kana": "ソフト", "idn": "Perangkat lunak" },
+  { "kanji": "電気辞書", "kana": "でんきじしょ", "idn": "Kamus elektronik" },
+  { "kanji": "経済", "kana": "けいざい", "idn": "Ekonomi" },
+  { "kanji": "市役所", "kana": "しやくしょ", "idn": "Kantor wali kota" },
+  { "kanji": "高校", "kana": "こうこう", "idn": "SMA" },
+  { "kanji": "歯医者", "kana": "はいしゃ", "idn": "Dokter gigi" },
+  { "kanji": "独身", "kana": "どくしん", "idn": "Bujangan" }
+]

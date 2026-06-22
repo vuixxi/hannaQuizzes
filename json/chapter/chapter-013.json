@@ -1,0 +1,23 @@
+[
+  { "kanji": "遊びます", "kana": "あそびます", "idn": "Bermain" },
+  { "kanji": "泳ぎます", "kana": "およぎます", "idn": "Berenang" },
+  { "kanji": "迎えます", "kana": "むかえます", "idn": "Menjemput" },
+  { "kanji": "結婚します", "kana": "けっこんします", "idn": "Menikah" },
+  { "kanji": "買い物します", "kana": "かいものします", "idn": "Berbelanja" },
+  { "kanji": "食事します", "kana": "しょくじします", "idn": "Makan bersama" },
+  { "kanji": "散歩します", "kana": "さんぽします", "idn": "Jalan-jalan" },
+  { "kanji": "大変", "kana": "たいへん", "idn": "Sulit, sukar" },
+  { "kanji": "欲しい", "kana": "ほしい", "idn": "Ingin" },
+  { "kanji": "広い", "kana": "ひろい", "idn": "Luas" },
+  { "kanji": "狭い", "kana": "せまい", "idn": "Sempit" },
+  { "kanji": "プール", "kana": "プール", "idn": "Kolam renang" },
+  { "kanji": "川", "kana": "かわ", "idn": "Sungai" },
+  { "kanji": "美術", "kana": "びじゅつ", "idn": "Seni" },
+  { "kanji": "釣り", "kana": "つり", "idn": "Pancing" },
+  { "kanji": "スキー", "kana": "スキー", "idn": "Ski" },
+  { "kanji": "週末", "kana": "しゅうまつ", "idn": "Akhir pekan" },
+  { "kanji": "お正月", "kana": "おしょうがつ", "idn": "Tahun baru" },
+  { "kanji": "ごろ", "kana": "ごろ", "idn": "~kira-kira" },
+  { "kanji": "何か", "kana": "なにか", "idn": "Sesuatu" },
+  { "kanji": "どこか", "kana": "どこか", "idn": "Suatu tempat" }
+]

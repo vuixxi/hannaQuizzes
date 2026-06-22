@@ -1,0 +1,20 @@
+[
+  { "kanji": "来ます", "kana": "きます", "idn": "Datang" },
+  { "kanji": "はきます", "kana": "はきます", "idn": "Memakai (sepatu, celana)" },
+  { "kanji": "かぶります", "kana": "かぶります", "idn": "Memakai (topi)" },
+  { "kanji": "かけます", "kana": "かけます", "idn": "Memakai (dasi)" },
+  { "kanji": "します", "kana": "します", "idn": "Melakukan" },
+  { "kanji": "うまれます", "kana": "うまれます", "idn": "Lahir" },
+  { "kanji": "私達", "kana": "わたしたち", "idn": "Kami" },
+  { "kanji": "コート", "kana": "コート", "idn": "Mantel" },
+  { "kanji": "セーター", "kana": "セーター", "idn": "Sweater" },
+  { "kanji": "スーツ", "kana": "スーツ", "idn": "Pakaian setelan" },
+  { "kanji": "帽子", "kana": "ぼうし", "idn": "Topi" },
+  { "kanji": "眼鏡", "kana": "めがね", "idn": "Kacamata" },
+  { "kanji": "ケーキ", "kana": "ケーキ", "idn": "Kue" },
+  { "kanji": "お弁当", "kana": "おべんとう", "idn": "Bekal" },
+  { "kanji": "ロボット", "kana": "ロボット", "idn": "Robot" },
+  { "kanji": "ユーモア", "kana": "ユーモア", "idn": "Humor" },
+  { "kanji": "都合", "kana": "つごう", "idn": "Kondisi" },
+  { "kanji": "よく", "kana": "よく", "idn": "Sering kali" }
+]

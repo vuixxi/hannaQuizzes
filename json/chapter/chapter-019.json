@@ -1,0 +1,23 @@
+[
+  { "kanji": "登ります", "kana": "のぼります", "idn": "Naik" },
+  { "kanji": "泊まります", "kana": "とまります", "idn": "Menginap" },
+  { "kanji": "掃除します", "kana": "そうじします", "idn": "Membersihkan" },
+  { "kanji": "洗濯します", "kana": "せんたくします", "idn": "Mencuci" },
+  { "kanji": "無理", "kana": "むり", "idn": "Tidak mungkin" },
+  { "kanji": "眠い", "kana": "ねむい", "idn": "Mengantuk" },
+  { "kanji": "強い", "kana": "つよい", "idn": "Kuat" },
+  { "kanji": "弱い", "kana": "よわい", "idn": "Lemah" },
+  { "kanji": "練習", "kana": "れんしゅう", "idn": "Latihan" },
+  { "kanji": "ゴルフ", "kana": "ゴルフ", "idn": "Golf" },
+  { "kanji": "相撲", "kana": "すもう", "idn": "Sumo" },
+  { "kanji": "ひ", "kana": "ひ", "idn": "Hari" },
+  { "kanji": "調子", "kana": "ちょうし", "idn": "Kondisi" },
+  { "kanji": "一度", "kana": "いちど", "idn": "Sekali" },
+  { "kanji": "一度も", "kana": "いちども", "idn": "Sekalipun" },
+  { "kanji": "だんだん", "kana": "だんだん", "idn": "Lama kelamaan, berangsur-angsur" },
+  { "kanji": "もうすぐ", "kana": "もうすぐ", "idn": "Sebentar lagi" },
+  { "kanji": "おかげさまで", "kana": "おかげさまで", "idn": "Berkat doa anda" },
+  { "kanji": "でも", "kana": "でも", "idn": "Tetapi" },
+  { "kanji": "乾杯", "kana": "かんぱい", "idn": "Toast" },
+  { "kanji": "ダイエット", "kana": "ダイエット", "idn": "Diet" }
+]

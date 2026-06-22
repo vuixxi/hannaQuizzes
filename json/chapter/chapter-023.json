@@ -1,0 +1,23 @@
+[
+  { "kanji": "聞きます", "kana": "ききます", "idn": "Mendengar" },
+  { "kanji": "回します", "kana": "まわします", "idn": "Memutar" },
+  { "kanji": "引きます", "kana": "ひきます", "idn": "Menarik" },
+  { "kanji": "換えます", "kana": "かえます", "idn": "Mengubah" },
+  { "kanji": "触ります", "kana": "さわります", "idn": "Menyentuh" },
+  { "kanji": "曲がります", "kana": "まがります", "idn": "Belok" },
+  { "kanji": "出ます", "kana": "でます", "idn": "Keluar" },
+  { "kanji": "歩きます", "kana": "あるきます", "idn": "Berjalan kaki" },
+  { "kanji": "渡ります", "kana": "わたります", "idn": "Menyebrang" },
+  { "kanji": "寂しい", "kana": "さびしい", "idn": "Sepi" },
+  { "kanji": "お湯", "kana": "おゆ", "idn": "Air panas" },
+  { "kanji": "音", "kana": "おと", "idn": "Suara" },
+  { "kanji": "サイズ", "kana": "サイズ", "idn": "Ukuran" },
+  { "kanji": "故障", "kana": "こしょう", "idn": "Rusak" },
+  { "kanji": "道", "kana": "みち", "idn": "Jalan" },
+  { "kanji": "交差点", "kana": "こうさてん", "idn": "Perempatan" },
+  { "kanji": "信号", "kana": "しんごう", "idn": "Lampu lalu lintas" },
+  { "kanji": "角", "kana": "かど", "idn": "Belokan / tikungan" },
+  { "kanji": "橋", "kana": "はし", "idn": "Jembatan" },
+  { "kanji": "駐車場", "kana": "ちゅうしゃじょう", "idn": "Tempat parkir" },
+  { "kanji": "建物", "kana": "たてもの", "idn": "Bangunan" }
+]
