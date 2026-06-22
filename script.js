@@ -34,41 +34,6 @@ const Router = {
 
 const STORAGE_KEY = "quiz_progress";
 
-localStorage.setItem(
-  STORAGE_KEY,
-  JSON.stringify({
-    chapters: {
-      "chapter-001": { unlockedLevel: 285, completed: true },
-      "chapter-002": { unlockedLevel: 450, completed: true },
-      "chapter-003": { unlockedLevel: 465, completed: true },
-      "chapter-004": { unlockedLevel: 555, completed: true },
-      "chapter-005": { unlockedLevel: 420, completed: true },
-      "chapter-006": { unlockedLevel: 630, completed: true },
-      "chapter-007": { unlockedLevel: 555, completed: true },
-      "chapter-008": { unlockedLevel: 675, completed: true },
-      "chapter-009": { unlockedLevel: 630, completed: true },
-      "chapter-010": { unlockedLevel: 570, completed: true },
-      "chapter-011": { unlockedLevel: 345, completed: true },
-      "chapter-012": { unlockedLevel: 585, completed: true },
-      "chapter-013": { unlockedLevel: 300, completed: true },
-      "chapter-014": { unlockedLevel: 675, completed: true },
-      "chapter-015": { unlockedLevel: 630, completed: true },
-      "chapter-016": { unlockedLevel: 570, completed: true },
-      "chapter-017": { unlockedLevel: 360, completed: true },
-      "chapter-018": { unlockedLevel: 300, completed: true },
-      "chapter-019": { unlockedLevel: 300, completed: true },
-      "chapter-020": { unlockedLevel: 195, completed: true },
-      "chapter-021": { unlockedLevel: 540, completed: true },
-      "chapter-022": { unlockedLevel: 255, completed: true },
-      "chapter-023": { unlockedLevel: 300, completed: true },
-      "chapter-024": { unlockedLevel: 225, completed: true },
-      "chapter-025": { unlockedLevel: 105, completed: true }
-    }
-  })
-);
-
-// localStorage.clear();
-
 /* ---------------- STATE ---------------- */
 const state = {
   chapters: [],
