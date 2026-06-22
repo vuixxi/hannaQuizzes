@@ -1,0 +1,286 @@
+@font-face {
+  font-family: "Quicksand-Bold";
+  src: url("./../../assets/fonts/Quicksand-Bold.ttf");
+}
+
+:root {
+  --primaryy: #2563eb; /* sementara sebelum primary ganti theme */
+  --primary: #2563eb;
+  --primary-light: #dbeafe;
+  --primary-dark: #1d4ed8;
+  --success: #16a34a;
+  --success-light: #ecfdf5;
+  --success-light-hover: #bbf7d0;
+  --success-dark: #15803d;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+  
+  /* New color */
+  --paid: #1e40af;
+  --paid-light: #dbeafe;
+  --paid-lighter: #eff6ff;
+  --paid-lightest: #f8fbff;
+  
+  
+  --text: #1f2937;
+  --text-light: #6b7280;
+  --border: #e5e7eb;
+  --border-hover: #bfbfbf;
+  --bg: #f8fafc;
+  --white: #ffffff;
+  --disabled-bg: #d1d5db;
+  --disabled-text: #6b7280;
+  --disabled-input-bg: #f1f5f9;
+  --disabled-input-bg2: #e9eff7;
+  --disabled-input-text: #94a3b8;
+  --disabled-input-border: #e2e8f0;
+  
+}
+
+button {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: var(--bg);
+   color: var(--text);
+   cursor: pointer;
+   outline: none;
+   padding: 0.8rem;
+   border: none;
+   border-radius: 3px;
+   font-family: "Quicksand-Bold";
+   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+   transition: 0.3s;
+}
+
+/* Hover effect */
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+}
+
+/* Active/click effect */
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  font-family: "Quicksand-Bold";
+  background-color: var(--bg);
+  color: var(--text);
+  user-select: none;
+  scroll-behavior: smooth;
+}
+
+.app {
+  /* width: 40%; */
+  margin: auto;
+  /* padding: 1rem; */
+}
+
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: var(--primary);
+  color: var(--bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.15);
+  z-index: 99;
+}
+
+.chapter-grid, 
+.level-grid, 
+.quiz-panel {
+  padding: 1rem;
+}
+
+
+
+.chapter-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.chapter-grid button:nth-child(odd) {
+  justify-self: start;
+}
+
+.chapter-grid button:nth-child(even) {
+  justify-self: end;
+}
+
+
+
+
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+
+
+
+.quiz-panel {
+  /* height: 100dvh; */
+}
+
+.quiz-panel .quiz-panel__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.quiz-panel .quiz-panel__head {
+  display: flex;
+  justify-content: center;
+}
+
+.quiz-panel .quiz-panel__head span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.4rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.05);
+}
+
+.quiz-panel .quiz-panel__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.quiz-panel .quiz-panel__question h1 {
+  background-color: var(--disabled-input-bg2);
+  text-align: center;
+  padding: 2rem 0.6rem;
+  border-radius: 0.4rem;
+  font-size: 1.2rem;
+}
+
+.quiz-panel .quiz-panel__answer {
+  display: flex;
+  flex-direction: column;
+  /* gap: 0.6rem; */
+}
+
+.quiz-panel .quiz-panel__answer button {
+  padding: 1rem;
+  border-radius: 3px;
+  margin-top: -1px;
+}
+
+.quiz-panel .quiz-panel__answer button {
+  box-shadow: none;
+  border: solid 1.5px var(--border);
+}
+
+.quiz-panel .quiz-panel__answer button:hover {
+  transform: none;
+  box-shadow: none;
+  background-color: var(--paid-lightest);
+  color: var(--primary-dark);
+}
+
+.quiz-panel .quiz-panel__answer button:active {
+  transform: none;
+  box-shadow: none;
+}
+
+
+
+.quiz-panel .quiz-panel__result {
+  height: 80dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz-panel .quiz-panel__result .quiz-panel__result-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem 1rem;
+  background-color: #fcfcfc;
+  border-radius: 0.4rem;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+/* button {
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+} */
+
+
+
+/* tapi kalau disabled, semua jadi abu-abu */
+button:disabled {
+  background: #ccc !important;
+  color: #777 !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* pastikan disabled tidak punya hover */
+button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Level styles */
+[data-level="Mudah"] {
+  background-color: #2ecc71;
+}
+
+[data-level="Sedang"] {
+  background-color: #f1c40f;
+  color: #2c3e50;
+}
+
+[data-level="Sulit"] {
+  background-color: #e67e22;
+}
+
+[data-level="Ekstrim"] {
+  background-color: #e74c3c;
+}
+
+[data-level="Grand"] {
+  background-color: #8e44ad;
+}
