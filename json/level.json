@@ -1,0 +1,7 @@
+[
+  { "name": "Mudah", "size": 3, "step": 1, "timer": 60 },
+  { "name": "Sedang", "size": 4, "step": 2, "timer": 55 },
+  { "name": "Sulit", "size": 5, "step": 4, "timer": 50 },
+  { "name": "Ekstrim", "size": 6, "step": 5, "timer": 45 },
+  { "name": "Grand", "size": 7, "step": 7, "timer": 40 }
+]
