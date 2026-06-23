@@ -73,9 +73,7 @@ button:active {
   box-sizing: border-box;
 }
 
-[hidden] {
-  display: none !important;
-}
+
 
 body {
   font-family: "Quicksand-Bold";
@@ -92,6 +90,86 @@ body {
 }
 
 
+
+[hidden] {
+  display: none !important;
+}
+
+
+.page {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-enter {
+  animation: pageEnter .25s forwards;
+}
+
+.page-leave {
+  animation: pageLeave .25s forwards;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageLeave {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+
+.header__menu,
+.header__subtitle {
+  opacity: 1;
+}
+
+.header-leave {
+  animation: headerLeave .25s forwards;
+}
+
+.header-enter {
+  animation: headerEnter .25s forwards;
+}
+
+@keyframes headerLeave {
+  to {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@keyframes headerEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
 .header {
   position: sticky;
   top: 0;
@@ -104,6 +182,13 @@ body {
   padding: 1rem;
   box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.15);
   z-index: 99;
+}
+
+.header .header__menu, 
+.header .header__subtitle {
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--paid-light);
 }
 
 .chapter-grid, 
