@@ -65,12 +65,12 @@ const Router = {
 
 const STORAGE_KEY = "quiz_progress";
 
- localStorage.setItem(
-   STORAGE_KEY,
-   JSON.stringify({
-     chapters: {
-       "chapter-001": { unlockedLevel: 285, completed: true },
-       "chapter-002": { unlockedLevel: 450, completed: false }
+// localStorage.setItem(
+//   STORAGE_KEY,
+//   JSON.stringify({
+//     chapters: {
+//       "chapter-001": { unlockedLevel: 285, completed: true },
+//       "chapter-002": { unlockedLevel: 450, completed: false }
 //       "chapter-003": { unlockedLevel: 465, completed: true },
 //       "chapter-004": { unlockedLevel: 555, completed: true },
 //       "chapter-005": { unlockedLevel: 420, completed: true },
@@ -94,9 +94,9 @@ const STORAGE_KEY = "quiz_progress";
 //       "chapter-023": { unlockedLevel: 300, completed: true },
 //       "chapter-024": { unlockedLevel: 225, completed: true },
 //       "chapter-025": { unlockedLevel: 105, completed: true }
-     }
-   })
- );
+//     }
+//   })
+// );
 
 // localStorage.clear();
 
