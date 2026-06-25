@@ -1,80 +1,63 @@
+/* =========================
+   1. FONT
+========================= */
 @font-face {
   font-family: "Quicksand-Bold";
   src: url("./../assets/fonts/Quicksand-Bold.ttf");
 }
 
+/* =========================
+   2. VARIABLES
+========================= */
 :root {
-  --primaryy: #2563eb; /* sementara sebelum primary ganti theme */
+  --primaryy: #2563eb;
   --primary: #2563eb;
   --primary-light: #dbeafe;
   --primary-dark: #1d4ed8;
+
   --success: #16a34a;
   --success-light: #ecfdf5;
   --success-light-hover: #bbf7d0;
   --success-dark: #15803d;
+
   --warning: #f59e0b;
   --danger: #dc2626;
-  
-  /* New color */
+
   --paid: #1e40af;
   --paid-light: #dbeafe;
   --paid-lighter: #eff6ff;
   --paid-lightest: #f8fbff;
-  
-  
+
   --text: #1f2937;
   --text-light: #6b7280;
+
   --border: #e5e7eb;
   --border-hover: #bfbfbf;
+
   --bg: #f8fafc;
   --white: #ffffff;
+
   --disabled-bg: #d1d5db;
   --disabled-text: #6b7280;
+
   --disabled-input-bg: #f1f5f9;
   --disabled-input-bg2: #e9eff7;
   --disabled-input-text: #94a3b8;
   --disabled-input-border: #e2e8f0;
-  
 }
 
-button {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   background-color: var(--bg);
-   color: var(--text);
-   cursor: pointer;
-   outline: none;
-   padding: 0.8rem;
-   border: none;
-   border-radius: 3px;
-   font-family: "Quicksand-Bold";
-   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
-   transition: 0.3s;
-}
-
-/* Hover effect */
-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.12);
-}
-
-/* Active/click effect */
-button:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.12);
-}
-
-
-
+/* =========================
+   3. RESET
+========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
-
+/* =========================
+   4. BASE ELEMENT
+========================= */
 body {
   font-family: "Quicksand-Bold";
   background-color: var(--bg);
@@ -83,122 +66,97 @@ body {
   scroll-behavior: smooth;
 }
 
-.app {
-  /* width: 40%; */
-  margin: auto;
-  /* padding: 1rem; */
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+
+  outline: none;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 3px;
+
+  font-family: "Quicksand-Bold";
+
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+  transition: 0.3s;
 }
 
-
-
-[hidden] {
-  display: none !important;
+/* button states */
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12);
 }
 
-
-.page {
-  opacity: 1;
+button:active {
   transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.12);
 }
 
-.page-enter {
-  animation: pageEnter .25s forwards;
+button:disabled {
+  background: #ccc !important;
+  color: #777 !important;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
-.page-leave {
-  animation: pageLeave .25s forwards;
+button:disabled:hover {
+  transform: none;
+  box-shadow: none;
 }
 
-@keyframes pageEnter {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* =========================
+   5. LAYOUT
+========================= */
+.app {
+  margin: auto;
 }
-
-@keyframes pageLeave {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  to {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-}
-
-
-.header__menu,
-.header__subtitle {
-  opacity: 1;
-}
-
-.header-leave {
-  animation: headerLeave .25s forwards;
-}
-
-.header-enter {
-  animation: headerEnter .25s forwards;
-}
-
-@keyframes headerLeave {
-  to {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-}
-
-@keyframes headerEnter {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-
-
 
 .header {
   position: sticky;
   top: 0;
   left: 0;
+
   background-color: var(--primary);
   color: var(--bg);
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 1rem;
-  box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0.4rem rgba(0,0,0,0.15);
   z-index: 99;
 }
 
-.header .header__menu, 
+.chapter-grid,
+.level-grid,
+.quiz-panel {
+  padding: 1rem;
+}
+
+/* =========================
+   6. HEADER COMPONENT
+========================= */
+.header .header__menu,
 .header .header__subtitle {
   font-size: 1rem;
   font-weight: normal;
   color: var(--paid-light);
 }
 
-.chapter-grid, 
-.level-grid, 
-.quiz-panel {
-  padding: 1rem;
+.header__menu,
+.header__subtitle {
+  opacity: 1;
 }
 
-
-
+/* =========================
+   7. GRID COMPONENTS
+========================= */
 .chapter-grid {
   display: grid;
   gap: 1rem;
@@ -212,23 +170,15 @@ body {
   justify-self: end;
 }
 
-
-
-
-
 .level-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.6rem;
 }
 
-
-
-
-.quiz-panel {
-  /* height: 100dvh; */
-}
-
+/* =========================
+   8. QUIZ PANEL
+========================= */
 .quiz-panel .quiz-panel__controls {
   display: flex;
   flex-direction: column;
@@ -244,12 +194,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
   text-align: center;
   font-size: 1.4rem;
+
   width: 4rem;
   height: 4rem;
+
   border-radius: 50%;
-  box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.05);
 }
 
 .quiz-panel .quiz-panel__body {
@@ -270,16 +223,13 @@ body {
 .quiz-panel .quiz-panel__answer {
   display: flex;
   flex-direction: column;
-  /* gap: 0.6rem; */
 }
 
 .quiz-panel .quiz-panel__answer button {
   padding: 1rem;
   border-radius: 3px;
   margin-top: -1px;
-}
 
-.quiz-panel .quiz-panel__answer button {
   box-shadow: none;
   border: solid 1.5px var(--border);
 }
@@ -296,8 +246,6 @@ body {
   box-shadow: none;
 }
 
-
-
 .quiz-panel .quiz-panel__result {
   height: 80dvh;
   display: flex;
@@ -307,45 +255,23 @@ body {
 
 .quiz-panel .quiz-panel__result .quiz-panel__result-controls {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+
   gap: 3rem;
   padding: 2rem 1rem;
+
   background-color: #fcfcfc;
   border-radius: 0.4rem;
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.15);
 }
 
-
-
-
-/* button {
-  padding: 10px 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #ffffff;
-  color: #333;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-} */
-
-
-
-/* tapi kalau disabled, semua jadi abu-abu */
-button:disabled {
-  background: #ccc !important;
-  color: #777 !important;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-/* pastikan disabled tidak punya hover */
-button:disabled:hover {
-  transform: none;
-  box-shadow: none;
+/* =========================
+   9. STATE / UTILITY
+========================= */
+[hidden] {
+  display: none !important;
 }
 
 /* Level styles */
@@ -368,4 +294,68 @@ button:disabled:hover {
 
 [data-level="Grand"] {
   background-color: #8e44ad;
+}
+
+/* =========================
+   10. ANIMATION
+========================= */
+.page {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-enter {
+  animation: pageEnter .25s forwards;
+}
+
+.page-leave {
+  animation: pageLeave .25s forwards;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageLeave {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.header-enter {
+  animation: headerEnter .25s forwards;
+}
+
+.header-leave {
+  animation: headerLeave .25s forwards;
+}
+
+@keyframes headerEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes headerLeave {
+  to {
+    opacity: 0;
+    transform: translateY(6px);
+  }
 }
