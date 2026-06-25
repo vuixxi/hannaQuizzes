@@ -65,37 +65,18 @@ const Router = {
 
 const STORAGE_KEY = "quiz_progress";
 
+// const chapters = {};
+
+// for (let i = 1; i <= 50; i++) {
+//   chapters[`chapter-${String(i).padStart(3, "0")}`] = {
+//     unlockedLevel: 999,
+//     completed: true,
+//   };
+// }
+
 // localStorage.setItem(
 //   STORAGE_KEY,
-//   JSON.stringify({
-//     chapters: {
-//       "chapter-001": { unlockedLevel: 285, completed: true },
-//       "chapter-002": { unlockedLevel: 450, completed: false }
-//       "chapter-003": { unlockedLevel: 465, completed: true },
-//       "chapter-004": { unlockedLevel: 555, completed: true },
-//       "chapter-005": { unlockedLevel: 420, completed: true },
-//       "chapter-006": { unlockedLevel: 630, completed: true },
-//       "chapter-007": { unlockedLevel: 555, completed: true },
-//       "chapter-008": { unlockedLevel: 675, completed: true },
-//       "chapter-009": { unlockedLevel: 630, completed: true },
-//       "chapter-010": { unlockedLevel: 570, completed: true },
-//       "chapter-011": { unlockedLevel: 345, completed: true },
-//       "chapter-012": { unlockedLevel: 585, completed: true },
-//       "chapter-013": { unlockedLevel: 300, completed: true },
-//       "chapter-014": { unlockedLevel: 675, completed: true },
-//       "chapter-015": { unlockedLevel: 630, completed: true },
-//       "chapter-016": { unlockedLevel: 570, completed: true },
-//       "chapter-017": { unlockedLevel: 360, completed: true },
-//       "chapter-018": { unlockedLevel: 300, completed: true },
-//       "chapter-019": { unlockedLevel: 300, completed: true },
-//       "chapter-020": { unlockedLevel: 195, completed: true },
-//       "chapter-021": { unlockedLevel: 540, completed: true },
-//       "chapter-022": { unlockedLevel: 255, completed: true },
-//       "chapter-023": { unlockedLevel: 300, completed: true },
-//       "chapter-024": { unlockedLevel: 225, completed: true },
-//       "chapter-025": { unlockedLevel: 105, completed: true }
-//     }
-//   })
+//   JSON.stringify({ chapters })
 // );
 
 // localStorage.clear();
@@ -495,7 +476,7 @@ function bindEvents() {
     UI.renderLevels();
     Router.go("levels");
     
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   });
 
   DOM.levelGrid.addEventListener("click", (e) => {
@@ -526,7 +507,27 @@ async function init() {
   state.levels = levels;
 
   ensureProgress(chapters);
+  
+  // DEBUG jumlah level
+  // let totalAllChapters = 0;
 
+  // for (const chapter of chapters) {
+  //   const words = await Api.loadChapter(chapter.file);
+
+  //   const totalLevels =
+  //     (words.length - 1) * 3 * levels.length;
+
+  //   console.log(
+  //     `${chapter.title}: ${totalLevels} level`
+  //   );
+
+  //   totalAllChapters += totalLevels;
+  // }
+
+  // console.log(
+  //   `TOTAL SEMUA CHAPTER: ${totalAllChapters} level`
+  // );
+  
   state.chapterId = chapters[0].id;
   state.chapterWords[chapters[0].id] =
     await Api.loadChapter(chapters[0].file);
