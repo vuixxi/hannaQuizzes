@@ -107,7 +107,8 @@ body {
    5. LAYOUT
 ========================= */
 .container {
-  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   grid-template-rows: auto 1fr;
   overflow: hidden;
@@ -240,7 +241,7 @@ body {
 .app__view--quiz .quiz-panel__answer button {
   padding: 1rem;
   border-radius: 0;
-  margin-top: -1px;bg
+  margin-top: -1px;
   box-shadow: none;
   border: solid 1.5px var(--disabled-input-bg);
   background: linear-gradient(-45deg, rgba(229, 231, 235, 0.8), rgba(221, 214, 254, 0.8));
