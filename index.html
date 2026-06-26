@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <title>Vocabulary Quiz</title>
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-  <div class="app">
+  <div class="container">
     <header class="header">
       <div class="header__brand">
         <h3 class="header__title">HannaQuizzes</h3>
@@ -17,9 +17,11 @@
         <h4 class="header__subtitle"></h4>
       </div>
     </header>
-    <section class="chapter-grid"></section>
-    <section class="level-grid" hidden></section>
-    <section class="quiz-panel" hidden></section>
+    <main class="app">
+      <section class="app__view app__view--chapters"></section>
+      <section class="app__view app__view--levels" hidden></section>
+      <section class="app__view app__view--quiz" hidden></section>
+    </main>
   </div>
   
   <script src="./script.js"></script>

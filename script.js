@@ -2,10 +2,17 @@ const DOM = {
   headerMenu: document.querySelector(".header__menu"),
   headerSubtitle: document.querySelector(".header__subtitle"),
 
-  chapterGrid: document.querySelector(".chapter-grid"),
-  levelGrid: document.querySelector(".level-grid"),
-  quizPanel: document.querySelector(".quiz-panel")
+  chapterGrid: document.querySelector(".app__view--chapters"),
+  levelGrid: document.querySelector(".app__view--levels"),
+  quizPanel: document.querySelector(".app__view--quiz")
 };
+
+function scrollToLastUnlockedLevel() {
+  const unlocked = [...DOM.levelGrid.querySelectorAll(".group-btn:not(:disabled)")];
+  const last = unlocked[unlocked.length - 1];
+  if (!last) return;
+  DOM.levelGrid.scrollTop = Math.max(0, last.offsetTop - 300);
+}
 
 const Router = {
   current: "chapters",
@@ -27,11 +34,9 @@ const Router = {
     oldPage.classList.add("page-leave");
 
     await new Promise(resolve => {
-      oldPage.addEventListener(
-        "animationend",
-        resolve,
-        { once: true }
-      );
+      oldPage.addEventListener("animationend", resolve, {
+        once: true
+      });
     });
 
     oldPage.classList.remove("page-leave");
@@ -40,13 +45,14 @@ const Router = {
     // enter
     newPage.hidden = false;
     newPage.classList.add("page-enter");
-
+    
+    // scroll ke level terakhir
+    scrollToLastUnlockedLevel();
+    
     await new Promise(resolve => {
-      newPage.addEventListener(
-        "animationend",
-        resolve,
-        { once: true }
-      );
+      newPage.addEventListener("animationend", resolve, {
+        once: true
+      });
     });
 
     newPage.classList.remove("page-enter");
@@ -55,9 +61,7 @@ const Router = {
 
     if (push) {
       history.pushState(
-        { page },
-        "",
-        "#" + page
+        { page }, "", "#" + page
       );
     }
   }
@@ -88,7 +92,8 @@ const state = {
   chapterId: null,
   chapterWords: {},
   progress: loadProgress(),
-  quizTimer: null
+  quizTimer: null,
+  currentQuiz: null
 };
 
 // console.log(state.progress);
@@ -112,7 +117,6 @@ function defaultProgress() {
 // LOAD + MERGE (FIX utama reset)
 function loadProgress() {
   const raw = safeParse(localStorage.getItem(STORAGE_KEY));
-
   const base = raw && typeof raw === "object" ? raw : defaultProgress();
 
   // pastikan chapters selalu object
@@ -145,16 +149,8 @@ function ensureProgress(chapters) {
     } else {
       // IMPORTANT: jangan overwrite progress lama
       state.progress.chapters[c.id] = {
-        unlockedLevel:
-          typeof existing.unlockedLevel === "number"
-            ? existing.unlockedLevel
-            : 1,
-
-        completed:
-          typeof existing.completed === "boolean"
-            ? existing.completed
-            : false,
-
+        unlockedLevel: typeof existing.unlockedLevel === "number" ? existing.unlockedLevel : 1,
+        completed: typeof existing.completed === "boolean" ? existing.completed : false,
         index: i
       };
     }
@@ -241,6 +237,13 @@ function shuffle(arr) {
 /* ---------------- QUIZ ---------------- */
 const Quiz = {
   start(group, level, globalIndex) {
+      
+    state.currentQuiz = {
+      group,
+      level,
+      globalIndex
+    };
+    
     clearInterval(state.quizTimer);
     state.quizTimer = null;
     
@@ -317,15 +320,20 @@ const Quiz = {
       
       const chapter = state.progress.chapters[state.chapterId];
       const perfect = score === questions.length;
-      
       const timeout = timeLeft <= 0;
-
+      const totalLevels = UI.getTotalLevels();
+      const hasNextLevel = globalIndex < totalLevels;
+      
       DOM.quizPanel.innerHTML = `
         <div class="quiz-panel__result">
           <div class="quiz-panel__result-controls">
             <h2>${timeout ? "Waktu Habis" : "Selesai"}</h2>
             <p>Berhasil menjawab ${score} dari ${questions.length} pertanyaan!</p>
-            <button type="type" class="quiz-panel__result-btn">Ok</button>
+            <div class="quiz-panel__result-detail">
+              <button type="button" class="quiz-panel__result-btn u-button">Kembali</button>
+              <button type="button" class="quiz-panel__again-btn u-button">Ulang</button>
+              ${ perfect && hasNextLevel ? `<button type="button" class="quiz-panel__next-btn u-button">Lanjut</button>` : "" }
+            </div>
           </div>
         </div>
       `;
@@ -394,11 +402,29 @@ const UI = {
     return state.chapterWords[state.chapterId];
   },
 
-  getTotalLevels() {
-    const words = this.getCurrentWords();
-    return words.length * state.levels.length;
-  },
+  // getTotalLevels() {
+  //   const words = this.getCurrentWords();
+  //   return words.length * state.levels.length;
+  // },
+getTotalLevels() {
+  const words = this.getCurrentWords();
 
+  const generated = LevelEngine.generate(
+    words,
+    state.levels
+  );
+
+  return generated.reduce((total, level) => {
+    return (
+      total +
+      level.stages.reduce(
+        (s, stage) => s + stage.groups.length,
+        0
+      )
+    );
+  }, 0);
+},
+  
   getNextChapter(id) {
     const idx = state.chapters.findIndex(c => c.id === id);
     return state.chapters[idx + 1] || null;
@@ -408,17 +434,10 @@ const UI = {
     DOM.chapterGrid.innerHTML = state.chapters.map((c, i) => {
       const prog = state.progress.chapters[c.id];
       const prev = state.chapters[i - 1];
-
-      const locked =
-        i > 0 && !state.progress.chapters[prev.id]?.completed;
+      const locked = i > 0 && !state.progress.chapters[prev.id]?.completed;
 
       return `
-        <button
-          data-id="${c.id}"
-          data-file="${c.file}"
-          data-index="${i}"
-          ${locked ? "disabled" : ""}
-        >
+        <button class="u-button" data-id="${c.id}" data-file="${c.file}" data-index="${i}" ${locked ? "disabled" : ""}>
           ${c.title} ${prog?.completed ? "✓" : ""}
         </button>
       `;
@@ -438,7 +457,7 @@ const UI = {
 
         const html = `
           <button
-            class="group-btn group-${level.name.toLowerCase()}"
+            class="group-btn group-${level.name.toLowerCase()} u-button"
             data-group='${JSON.stringify(group)}'
             data-level="${level.name}"
             data-global="${global}"
@@ -465,17 +484,15 @@ function bindEvents() {
 
     const chapter = state.chapters[btn.dataset.index];
     state.chapterId = chapter.id;
-
+    
     if (!state.chapterWords[chapter.id]) {
-      state.chapterWords[chapter.id] =
-        await Api.loadChapter(chapter.file);
+      state.chapterWords[chapter.id] = await Api.loadChapter(chapter.file);
     }
     
     setHeader(chapter.title);
-    
     UI.renderLevels();
-    Router.go("levels");
-    
+    await Router.go("levels");
+
     // window.scrollTo(0, 0);
   });
 
@@ -492,10 +509,31 @@ function bindEvents() {
   });
   
   DOM.quizPanel.addEventListener("click", e => {
-    const resultBtn = e.target.closest(".quiz-panel__result-btn");
   
-    if (resultBtn) {
+    // kembali
+    if (e.target.closest(".quiz-panel__result-btn")) {
       history.back();
+      return;
+    }
+  
+    // ulang level yang sama
+    if (e.target.closest(".quiz-panel__again-btn")) {
+      const quiz = state.currentQuiz;
+      if (!quiz) return;
+      Quiz.start(quiz.group, quiz.level, quiz.globalIndex);
+      return;
+    }
+  
+    // lanjut level berikutnya
+    if (e.target.closest(".quiz-panel__next-btn")) {
+      const nextBtn = DOM.levelGrid.querySelector(`[data-global="${state.currentQuiz.globalIndex + 1}"]:not(:disabled)`);
+      if (!nextBtn) {
+        history.back(); // level terakhir
+        return;
+      }
+      const group = JSON.parse(nextBtn.dataset.group);
+      const level = state.levels.find(v => v.name === nextBtn.dataset.level);
+      Quiz.start(group, level, Number(nextBtn.dataset.global));
     }
   });
 }
@@ -541,9 +579,7 @@ async function init() {
   // console.log(document.body.innerHTML);
   
   history.replaceState(
-    { page: "chapters" },
-    "",
-    "#chapters"
+    { page: "chapters" }, "", "#chapters"
   );
   
   Router.go("chapters", false);
@@ -553,11 +589,7 @@ init();
 
 
 async function setHeader(text = "") {
-  const current =
-    DOM.headerMenu.hidden
-      ? DOM.headerSubtitle
-      : DOM.headerMenu;
-
+  const current = DOM.headerMenu.hidden ? DOM.headerSubtitle : DOM.headerMenu;
   current.classList.add("header-leave");
 
   await new Promise(resolve => {
@@ -577,26 +609,17 @@ async function setHeader(text = "") {
 
   if (showSubtitle) {
     DOM.headerSubtitle.textContent = text;
-
     DOM.headerSubtitle.classList.add("header-enter");
 
-    DOM.headerSubtitle.addEventListener(
-      "animationend",
-      () => {
-        DOM.headerSubtitle.classList.remove("header-enter");
-      },
-      { once: true }
-    );
+    DOM.headerSubtitle.addEventListener("animationend", () => {
+      DOM.headerSubtitle.classList.remove("header-enter");
+    }, { once: true } );
   } else {
     DOM.headerMenu.classList.add("header-enter");
 
-    DOM.headerMenu.addEventListener(
-      "animationend",
-      () => {
+    DOM.headerMenu.addEventListener("animationend", () => {
         DOM.headerMenu.classList.remove("header-enter");
-      },
-      { once: true }
-    );
+    }, { once: true } );
   }
 }
 
