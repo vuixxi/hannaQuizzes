@@ -6,6 +6,11 @@
   src: url("./../assets/fonts/Quicksand-Bold.ttf");
 }
 
+@font-face {
+  font-family: "M-Plus-Bold";
+  src: url("./../assets/fonts/M-Plus-Bold.ttf");
+}
+
 /* =========================
    2. VARIABLES
 ========================= */
@@ -230,6 +235,16 @@ body {
   border-radius: 0.4rem;
   font-size: 1.2rem;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.app__view--quiz .quiz-panel__question .font-jp, 
+.app__view--quiz .quiz-panel__answer button.font-jp {
+  font-family: "M-Plus-Bold";
+}
+
+.app__view--quiz .quiz-panel__question .font-id, 
+.app__view--quiz .quiz-panel__answer button.font-id {
+  font-family: "Quicksand-Bold";
 }
 
 .app__view--quiz .quiz-panel__answer {
