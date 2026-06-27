@@ -70,7 +70,7 @@ body {
   user-select: none;
   scroll-behavior: smooth;
   
-  background: url("./../assets/images/bg.jpeg");
+  background: url("./../assets/images/bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
