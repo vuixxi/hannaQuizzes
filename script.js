@@ -83,14 +83,14 @@ const STORAGE_KEY = "quiz_progress";
 //   JSON.stringify({ chapters })
 // );
 
-localStorage.setItem(
-  STORAGE_KEY, JSON.stringify({
-    chapters: {
-      "chapter-001": { unlockedLevel: 120, completed: false },
-      "chapter-002": { unlockedLevel: 1, completed: false }
-    }
-  })
-);
+// localStorage.setItem(
+//   STORAGE_KEY, JSON.stringify({
+//     chapters: {
+//       "chapter-001": { unlockedLevel: 120, completed: false },
+//       "chapter-002": { unlockedLevel: 1, completed: false }
+//     }
+//   })
+// );
 
 
 // localStorage.clear();
