@@ -293,6 +293,8 @@ const Quiz = {
       const q = questions[current];
       const pool = q.mode === "kana-idn" ? words.map(v => v.idn) : words.map(v => v.kana);
       const options = shuffle([q.a, ...pool.filter(v => v !== q.a)]);
+      const questionFont = q.mode === "kana-idn" ? "font-jp" : "font-id";
+      const optionFont = q.mode === "kana-idn" ? "font-id" : "font-jp";
       
       DOM.quizPanel.innerHTML = `
         <div class="quiz-panel__controls">
@@ -301,11 +303,11 @@ const Quiz = {
           </div>
           <div class="quiz-panel__body">
             <div class="quiz-panel__question">
-              <h1>${q.q}</h1>
+              <h1 class="${questionFont}">${q.q}</h1>
             </div>
             <div class="quiz-panel__answer">
                 ${options.map(o =>
-                  `<button class="opt" data-a="${o}">${o}</button>`
+                  `<button class="opt u-button ${optionFont}" data-a="${o}">${o}</button>`
                 ).join("")}
             </div>
           </div>
@@ -645,4 +647,47 @@ window.addEventListener("popstate", e => {
   }
 
   Router.go(page, false);
+});
+
+
+
+// const clickSound = new Audio("assets/audios/click.mp3");
+// document.addEventListener("click", (e) => {
+//   if (!e.target.closest("button, .u-button")) return;
+//   const sound = clickSound.cloneNode();
+//   sound.play().catch(() => {});
+// });
+
+
+const audioCtx = new AudioContext();
+
+async function loadClick() {
+  const res = await fetch("./assets/audios/click.mp3");
+  const buf = await res.arrayBuffer();
+  return await audioCtx.decodeAudioData(buf);
+}
+
+let clickBuffer;
+
+loadClick().then(buffer => {
+  clickBuffer = buffer;
+});
+
+function playClick() {
+  if (!clickBuffer) return;
+
+  const source = audioCtx.createBufferSource();
+  source.buffer = clickBuffer;
+  source.connect(audioCtx.destination);
+  source.start();
+}
+
+document.addEventListener("click", e => {
+  if (!e.target.closest("button")) return;
+
+  if (audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
+
+  playClick();
 });
