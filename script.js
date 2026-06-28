@@ -16,6 +16,8 @@ function scrollToLastUnlockedLevel() {
 
 const Router = {
   current: "chapters",
+  busy: false,
+  pending: null,
 
   pages: {
     chapters: DOM.chapterGrid,
@@ -24,45 +26,65 @@ const Router = {
   },
 
   async go(page, push = true) {
+    // kalau sedang animasi, simpan request terakhir
+    if (this.busy) {
+      this.pending = { page, push };
+      return;
+    }
 
     if (page === this.current) return;
 
-    const oldPage = this.pages[this.current];
-    const newPage = this.pages[page];
+    this.busy = true;
 
-    // leave
-    oldPage.classList.add("page-leave");
+    try {
+      const oldPage = this.pages[this.current];
+      const newPage = this.pages[page];
 
-    await new Promise(resolve => {
-      oldPage.addEventListener("animationend", resolve, {
-        once: true
+      oldPage.classList.add("page-leave");
+
+      await new Promise(resolve => {
+        oldPage.addEventListener("animationend", resolve, {
+          once: true
+        });
       });
-    });
 
-    oldPage.classList.remove("page-leave");
-    oldPage.hidden = true;
-
-    // enter
-    newPage.hidden = false;
-    newPage.classList.add("page-enter");
-    
-    // scroll ke level terakhir
-    scrollToLastUnlockedLevel();
-    
-    await new Promise(resolve => {
-      newPage.addEventListener("animationend", resolve, {
-        once: true
+      Object.values(this.pages).forEach(p => {
+        p.hidden = true;
+        p.classList.remove("page-enter", "page-leave");
       });
-    });
 
-    newPage.classList.remove("page-enter");
+      newPage.hidden = false;
+      newPage.classList.add("page-enter");
 
-    this.current = page;
+      if (page === "levels") {
+        scrollToLastUnlockedLevel();
+      }
 
-    if (push) {
-      history.pushState(
-        { page }, "", "#" + page
-      );
+      await new Promise(resolve => {
+        newPage.addEventListener("animationend", resolve, {
+          once: true
+        });
+      });
+
+      newPage.classList.remove("page-enter");
+
+      this.current = page;
+
+      if (push) {
+        history.pushState({ page }, "", "#" + page);
+      }
+
+    } finally {
+      this.busy = false;
+
+      // jalankan request terakhir yang sempat tertunda
+      if (this.pending) {
+        const { page, push } = this.pending;
+        this.pending = null;
+
+        // jangan await supaya tidak membuat recursive promise panjang
+        this.go(page, push);
+      }
     }
   }
 };
@@ -82,6 +104,16 @@ const STORAGE_KEY = "quiz_progress";
 //   STORAGE_KEY,
 //   JSON.stringify({ chapters })
 // );
+
+// localStorage.setItem(
+//   STORAGE_KEY, JSON.stringify({
+//     chapters: {
+//       "chapter-001": { unlockedLevel: 556, completed: false },
+//       "chapter-002": { unlockedLevel: 1, completed: false }
+//     }
+//   })
+// );
+
 
 // localStorage.clear();
 
@@ -626,6 +658,7 @@ async function setHeader(text = "") {
 }
 
 window.addEventListener("popstate", e => {
+  
   clearInterval(state.quizTimer);
   state.quizTimer = null;
 
@@ -691,3 +724,15 @@ document.addEventListener("click", e => {
 
   playClick();
 });
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest("button");
+  if (!btn || btn.disabled) return;
+
+  btn.disabled = true;
+
+  setTimeout(() => {
+    btn.disabled = false;
+  }, 300); // abaikan klik kedua selama 300ms
+});
+
